@@ -1,6 +1,6 @@
 # cryptocurrency-price-tracker
 
-This is based on https://github.com/Larkenx/cryptocurrency-price-tracker. Built with Vue+Vuetify+Axios
+This is based on a [Scotch.io tutorial](https://scotch.io/tutorials/build-a-cryptocurrency-comparison-site-with-vuejs), which covers building a website to compare cryptocurrencies. Built with Vue+Vuetify+Axios
 
 ## Build Setup
 
