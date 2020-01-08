@@ -1,12 +1,11 @@
 <template id="cryptocurrency" >
     <v-card flat class="elevation-4">
         <v-card-title class="display-2 blue-grey darken-2" style="color: white; " primary-title>Рейтинг криптовалют</v-card-title>
-        <v-card-text>
+        <v-card-text class="my-5">
             Это приложение показывает топ-15 криптовалют мира по рыночной капитализации и дает возможность сравнить их цены и суточный объем.
         </v-card-text>
-        <v-card-text>
-<!--            <div>{{flood}}</div>     -->
-            <v-data-table :headers="headers" :items="items" hide-actions>
+        <v-card-text> 
+            <v-data-table :headers="headers" :items="items" hide-default-footer>
             <template slot="items" scope="props">
                 <td class="text-xs-left">{{ props.item.name }}</td>
                 <td class="text-xs-left">{{ parseFloat(props.item.priceUsd).toFixed(2) }}</td>
@@ -30,8 +29,7 @@ export default {
                 {text: "Капитализация", value : "marketCapUsd", align: "left"},
                 {text: "Суточный объем", value : "volumeUsd24Hr", align: "left"}
             ],
-            items : [],
-            flood : []
+            items : []
         };
     },
     methods: {
@@ -40,17 +38,12 @@ export default {
             .then((resp) => 
                 this.items = resp.data.data
             )
-            .catch((err) => {
-                console.log(err);
-            });
         },
 
     },
     created () {
         this.getCoins();
-        this.$options.sockets.onmessage = (data) => this.flood = data.data;
          setInterval(() => {
-            console.log("UPDATED!");
             this.getCoins();
         }, update_interval);
     },
